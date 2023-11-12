@@ -1,0 +1,268 @@
+:root {
+
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --background-color: #ccd8dd;
+  --title-text-color: rgb(238, 247, 225);
+  --text-color: rgba(0, 0, 0, 1);
+  --accent-color: rgba(61, 44, 86, .5);
+  --button-background: #1a1a1a;
+  --task-background: #4CAF50;
+  --task-hover-background: #367c39;
+  --button-hover-opacity: 0.5;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #ffffff;
+    --text-color: #213547;
+    --accent-color: #747bff;
+    --button-background: #f9f9f9;
+  }
+}
+#root {
+  width: 100%; 
+  min-height: 100%; 
+  box-sizing: border-box; 
+}
+
+
+body {
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns content to the left */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  line-height: 1.5;
+  font-weight: 500; /* Thicker font */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  border: 0px solid #4CAF50;
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: background-color 0.5s ease;
+}
+
+body.green-background {
+  background-color: green;
+}
+
+.header-container {
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
+}
+
+.header-container img {
+  width: 150px; 
+  height: auto; 
+}
+.h1-title {
+  font-size: 300%;
+  font-style: italic;
+  color: var(--title-text-color);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  
+
+}
+.h1-title:hover {
+  cursor: pointer;
+}
+.h2-title {
+  padding-left: 80px;
+  color: black;
+  /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+
+
+}
+hr {
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+h1, h2, h3 {
+  font-weight: 600; /* Even thicker font for headings */
+  margin: 10px 0;
+}
+
+/* Form styles */
+.item-form {
+  display: flex; /* Aligns form elements in a row */
+  align-items: center; /* Centers items vertically */
+  gap: 10px; /* Adds space between form elements */
+  flex-wrap: wrap; /* Allows items to wrap to the next line if needed */
+  margin-bottom: 20px; /* Adds margin below the form */
+}
+
+.item-form .form-row {
+  flex-grow: 1; /* Allows input to grow and fill space */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Allows label and input to stay on the same line or wrap if needed */
+  gap: 10px;
+}
+
+.item-form label {
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.item-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%; /* Full width of its container */
+  /* Adjust margin and padding if necessary */
+  /*margin-left: 10px;  Adds some space between the label and the input */ 
+  flex-grow: 1; /* Allows input to grow and fill the remaining space */
+  min-width: 160px; /* Ensures the input doesn't get too small */
+}
+
+/* Button styles */
+button {
+  padding: 10px 15px; /* Adjust padding to align with the input field */
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: var(--button-background);
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s;
+  /* Add margin if necessary to align with the input field */
+}
+
+button:hover {
+  opacity: var(--button-hover-opacity);
+}
+
+button:focus,
+input:focus-visible {
+  outline: 4px auto var(--accent-color) !important; 
+}
+.list-list {
+  display: flex; /* Use Flexbox */
+  justify-content: space-between; /* Space out items evenly */
+  align-items: stretch; /* Stretch items to fill the container vertically */
+  height: 100vh; /* Set the height to fill the viewport */
+  border: 1px solid rgb(0, 0, 0); /* Rounded silver border */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* To maintain the border-radius effect */
+  cursor: pointer;
+
+  transition: background-color 0.5s ease;
+}
+
+.list-list > div {
+  margin:5px;
+  flex: 1; /* Each child div takes equal width */
+  border-left: 1px solid; /* Border between items */
+  border-radius: 10px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding and border in the width and height */
+  border-color: black;
+}
+
+.list-list > div:first-child {
+  border-left: none; /* No left border for the first item */
+}
+/* Task list styles */
+.task-list {
+  list-style-type: none;
+  padding: 4px;
+  width: calc(100% - 40px);
+}
+.selected {
+
+  background-color: rgba(255, 215, 0, 0.33);
+}
+
+.task-item {
+  background-color: var(--task-background);
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  
+  padding: 15px; /* Add padding here */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item .remove-button {
+  width: 35px; /* Square shape */
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Make button transparent */
+  transition: background-color 0.3s, opacity 0.3s, color 0.3s;
+  color: transparent;
+}
+.btn {
+  color: var(--title-text-color);
+}
+.task-item:hover .remove-btn {
+  opacity: 1; /* Show button when task-item is hovered */
+  color: lightgray;
+}
+
+.task-item button:hover {
+  background-color: var(--task-hover-background);
+}
+
+.container {
+  position: relative;
+}
+
+.smiley-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px; /* Adjust the size as needed */
+  height: auto;
+}
+
+@keyframes dropAndFade {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+    background-color: var(--task-background);
+  }
+  50% {
+    background-color: #ffcc00; /* A bright happy color in the middle of the animation */
+  }
+  100% {
+    transform: translateY(500px); /* Move the task to the bottom of the screen */
+    opacity: 0;
+    background-color: #ff69b4; /* End the animation with another bright color */
+  }
+}
+
+.task-item.removing {
+  animation: dropAndFade 0.5s ease forwards; /* Adjust time as needed for the fast rate */
+}
+
+
+/* Link styles */
+a {
+  color: var(--accent-color);
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--accent-color-hover);
+}
+
